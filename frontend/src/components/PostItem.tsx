@@ -1,6 +1,9 @@
 import { useAppDispatch } from "../store/hooks";
 import { deletePost } from "../store/posts/poststhunks";
 import { Post } from "../types/post";
+import { Button } from "./ui/button";
+import { TableCell } from "./ui/table";
+import { TableRow } from "./ui/table";
 
 interface Props {
     post: Post;
@@ -15,13 +18,12 @@ export default function PostItem({ post }: Props) {
     };
 
     return (
-        <li>
-            {post.name}
-            <button
-                onClick={handleDelete}
-            >
-                Eliminar
-            </button>
-        </li>
+        <TableRow>
+            <TableCell>{post.name}</TableCell>
+            <TableCell>{post.description}</TableCell>
+            <TableCell className="flex justify-end">
+                <Button onClick={handleDelete} variant="destructive">Eliminar</Button>
+            </TableCell>
+        </TableRow>
     );
 }
