@@ -26,6 +26,6 @@ class PostService:
         post = self.get_post(post_id)
         return self.repo.update(post, data)
 
-    def delete_post(self, post_id: UUID) -> None:
+    def delete_post(self, post_id: UUID) -> Post:
         post = self.get_post(post_id)
-        self.repo.delete(post)
+        return self.repo.delete(post)

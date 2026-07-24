@@ -36,6 +36,8 @@ class PostRepository:
         self.db.refresh(post)
         return post
 
-    def delete(self, post: Post) -> None:
+    def delete(self, post: Post) -> Post:
+        deleted = Post(id=post.id, name=post.name, description=post.description)
         self.db.delete(post)
         self.db.commit()
+        return deleted

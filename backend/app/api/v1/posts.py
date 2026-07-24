@@ -35,6 +35,6 @@ def update_post(
     return service.update_post(post_id, payload)
 
 
-@router.delete("/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{post_id}", response_model=GetPost, status_code=status.HTTP_200_OK)
 def delete_post(post_id: UUID, service: PostService = Depends(get_post_service)):
-    service.delete_post(post_id)
+    return  service.delete_post(post_id)
